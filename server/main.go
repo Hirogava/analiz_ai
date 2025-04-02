@@ -2,6 +2,7 @@ package main
 
 import (
 	"duabi/db"
+	"duabi/ai"
 	"fmt"
 	"log"
 	"net/http"
@@ -47,7 +48,12 @@ func main() {
 
 	r.HandleFunc("/treatment", func(w http.ResponseWriter, r *http.Request) {
 		question := r.FormValue("question")
-		fmt.Println(question)
+		otvet, err := ai.AiQuestion(question)
+		if err != nil {
+			fmt.Println("Ошибка при получении ответа от AI:", err)
+			return
+		}
+		fmt.Println(otvet)
 	}).Methods("POST")
 
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))

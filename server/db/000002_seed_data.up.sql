@@ -37,10 +37,10 @@ BEGIN
         INSERT INTO "public"."questions" (category_id, question) VALUES (4, 'Проблемы с мобильной версией сайта.');
         INSERT INTO "public"."questions" (category_id, question) VALUES (4, 'Страница долго загружается.');
 
-        INSERT INTO "public"."questions" (category_id, question) VALUES (5, 'Как сбросить пароль?');
+        INSERT INTO "public"."questions" (category_id, question) VALUES (1, 'Как сбросить пароль?');
         INSERT INTO "public"."questions" (category_id, question) VALUES (5, 'Как связаться с техподдержкой?');
-        INSERT INTO "public"."questions" (category_id, question) VALUES (5, 'Как вернуть товар?');
-        INSERT INTO "public"."questions" (category_id, question) VALUES (5, 'Как отменить заказ?');
+        INSERT INTO "public"."questions" (category_id, question) VALUES (2, 'Как вернуть товар?');
+        INSERT INTO "public"."questions" (category_id, question) VALUES (2, 'Как отменить заказ?');
         INSERT INTO "public"."questions" (category_id, question) VALUES (5, 'Как изменить информацию в профиле?');
     END IF;
 END $$;
