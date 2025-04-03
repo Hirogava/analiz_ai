@@ -14,7 +14,7 @@ import (
 const (
     baseURL   = "https://openrouter.ai/api/v1/chat/completions"
     apiKey    = "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"
-    modelName = "qwen/qwen2.5-vl-32b-instruct:free"
+    modelName = "google/gemini-2.5-pro-exp-03-25:free"
 )
 
 type CompletionRequest struct {
