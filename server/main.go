@@ -58,12 +58,12 @@ func main() {
 			return
 		} else if questionId == -1 {
 			answer.Answer = "Ваш вопрос не найден, пожалуйста, напишите в техподдержку"
-		}
-
-		answer.Answer, err = ai.GetAnswer(dB, questionId, question)
-		if err != nil {
-			fmt.Println("Ошибка при получении ответа от AI:", err)
-			return
+		} else{
+			answer.Answer, err = ai.GetAnswer(dB, questionId, question)
+			if err != nil {
+				fmt.Println("Ошибка при получении ответа от AI:", err)
+				return
+			}
 		}
 
 		tmpl := template.Must(template.ParseFiles("static/templates/response.html"))
