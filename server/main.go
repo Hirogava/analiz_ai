@@ -3,6 +3,7 @@ package main
 import (
 	"duabi/db"
 	"duabi/ai"
+	"duabi/models"
 	"fmt"
 	"log"
 	"net/http"
@@ -47,13 +48,24 @@ func main() {
 	}).Methods("GET")
 
 	r.HandleFunc("/treatment", func(w http.ResponseWriter, r *http.Request) {
+		var answer models.Answer
 		question := r.FormValue("question")
-		otvet, err := ai.AiQuestion(question)
+		answer.Question = question
+		questionId, err := ai.GetCategory(question)
+
 		if err != nil {
 			fmt.Println("Ошибка при получении ответа от AI:", err)
 			return
 		}
-		fmt.Println(otvet)
+
+		answer.Answer, err = ai.GetAnswer(dB, questionId, question)
+		if err != nil {
+			fmt.Println("Ошибка при получении ответа от AI:", err)
+			return
+		}
+
+		tmpl := template.Must(template.ParseFiles("static/templates/response.html"))
+    	tmpl.Execute(w, answer)
 	}).Methods("POST")
 
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
