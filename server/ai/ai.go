@@ -14,7 +14,7 @@ import (
 const (
     baseURL   = "https://openrouter.ai/api/v1/chat/completions"
     apiKey    = "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"
-    modelName = "google/gemini-2.5-pro-exp-03-25:free"
+    modelName = "deepseek/deepseek-chat-v3-0324:free"
 )
 
 type CompletionRequest struct {
